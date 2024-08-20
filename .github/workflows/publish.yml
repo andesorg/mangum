@@ -22,7 +22,7 @@ jobs:
           ${{ runner.os }}-publish-pip-
     - name: Install dependencies
       run: |
-        pip install -U -r poetry
+        pip install -U poetry
         poetry install
     - name: Run tests
       run: scripts/test
