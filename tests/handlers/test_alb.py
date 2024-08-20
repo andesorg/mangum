@@ -206,7 +206,7 @@ def test_aws_alb_scope_real(
     if scope_path == "":
         scope_path = "/"
 
-    assert type(handler.body).isinstance(bytes)
+    assert isinstance(handler.body, bytes)
     assert handler.scope == {
         "asgi": {"version": "3.0", "spec_version": "2.0"},
         "aws.context": {},
