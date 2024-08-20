@@ -36,4 +36,4 @@ jobs:
         run: |
           scripts/lint
       - name: Run codecov
-        run: codecov
+        run: poetry run codecov
