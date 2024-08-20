@@ -27,12 +27,12 @@ def get_mock_aws_http_gateway_event_v1(
             "x-forwarded-proto": ["https"],
             "host": ["test.execute-api.us-west-2.amazonaws.com"],
         },
-        "queryStringParameters": {k: v[0] for k, v in query_parameters.items()}
-        if query_parameters
-        else {},
-        "multiValueQueryStringParameters": {k: v for k, v in query_parameters.items()}
-        if query_parameters
-        else {},
+        "queryStringParameters": (
+            {k: v[0] for k, v in query_parameters.items()} if query_parameters else {}
+        ),
+        "multiValueQueryStringParameters": (
+            {k: v for k, v in query_parameters.items()} if query_parameters else {}
+        ),
         "requestContext": {
             "accountId": "123456789012",
             "apiId": "id",
@@ -97,9 +97,9 @@ def get_mock_aws_http_gateway_event_v2(
             "x-forwarded-proto": "https",
             "host": "test.execute-api.us-west-2.amazonaws.com",
         },
-        "queryStringParameters": {k: v[0] for k, v in query_parameters.items()}
-        if query_parameters
-        else {},
+        "queryStringParameters": (
+            {k: v[0] for k, v in query_parameters.items()} if query_parameters else {}
+        ),
         "requestContext": {
             "accountId": "123456789012",
             "apiId": "api-id",
@@ -199,7 +199,7 @@ def test_aws_http_gateway_scope_basic_v1():
         example_event, example_context, {"api_gateway_base_path": "/"}
     )
 
-    assert type(handler.body) == bytes
+    assert type(handler.body).isinstance(bytes)
     assert handler.scope == {
         "asgi": {"version": "3.0", "spec_version": "2.0"},
         "aws.context": {},
@@ -308,7 +308,7 @@ def test_aws_http_gateway_scope_basic_v2():
         example_event, example_context, {"api_gateway_base_path": "/"}
     )
 
-    assert type(handler.body) == bytes
+    assert type(handler.body).isinstance(bytes)
     assert handler.scope == {
         "asgi": {"version": "3.0", "spec_version": "2.0"},
         "aws.context": {},

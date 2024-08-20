@@ -53,11 +53,11 @@ def mock_aws_api_gateway_event(request):
         },
         "resource": "/{proxy+}",
         "httpMethod": method,
-        "queryStringParameters": {
-            k: v[0] for k, v in multi_value_query_parameters.items()
-        }
-        if multi_value_query_parameters
-        else None,
+        "queryStringParameters": (
+            {k: v[0] for k, v in multi_value_query_parameters.items()}
+            if multi_value_query_parameters
+            else None
+        ),
         "multiValueQueryStringParameters": multi_value_query_parameters or None,
         "stageVariables": {"stageVarName": "stageVarValue"},
     }
@@ -82,11 +82,11 @@ def mock_http_api_event_v2(request):
             "x-forwarded-proto": "https",
             "host": "test.execute-api.us-west-2.amazonaws.com",
         },
-        "queryStringParameters": {
-            k: v[0] for k, v in multi_value_query_parameters.items()
-        }
-        if multi_value_query_parameters
-        else None,
+        "queryStringParameters": (
+            {k: v[0] for k, v in multi_value_query_parameters.items()}
+            if multi_value_query_parameters
+            else None
+        ),
         "requestContext": {
             "accountId": "123456789012",
             "apiId": "api-id",
@@ -140,16 +140,16 @@ def mock_http_api_event_v1(request):
             "x-forwarded-proto": "https",
             "host": "test.execute-api.us-west-2.amazonaws.com",
         },
-        "queryStringParameters": {
-            k: v[-1] for k, v in multi_value_query_parameters.items()
-        }
-        if multi_value_query_parameters
-        else None,
-        "multiValueQueryStringParameters": {
-            k: v for k, v in multi_value_query_parameters.items()
-        }
-        if multi_value_query_parameters
-        else None,
+        "queryStringParameters": (
+            {k: v[-1] for k, v in multi_value_query_parameters.items()}
+            if multi_value_query_parameters
+            else None
+        ),
+        "multiValueQueryStringParameters": (
+            {k: v for k, v in multi_value_query_parameters.items()}
+            if multi_value_query_parameters
+            else None
+        ),
         "requestContext": {
             "accountId": "123456789012",
             "apiId": "api-id",

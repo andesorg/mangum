@@ -3,6 +3,7 @@ References:
 1. https://docs.aws.amazon.com/lambda/latest/dg/services-alb.html
 2. https://docs.aws.amazon.com/elasticloadbalancing/latest/application/lambda-functions.html  # noqa: E501
 """
+
 from typing import Dict, List, Optional
 
 import pytest
@@ -205,7 +206,7 @@ def test_aws_alb_scope_real(
     if scope_path == "":
         scope_path = "/"
 
-    assert type(handler.body) == bytes
+    assert type(handler.body).isinstance(bytes)
     assert handler.scope == {
         "asgi": {"version": "3.0", "spec_version": "2.0"},
         "aws.context": {},

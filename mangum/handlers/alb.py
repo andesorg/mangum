@@ -58,9 +58,11 @@ def encode_query_string_for_alb(params: QueryParams) -> bytes:
         "them. You must decode them in your Lambda function."
     """
     params = {
-        unquote_plus(key): unquote_plus(value)
-        if isinstance(value, str)
-        else tuple(unquote_plus(element) for element in value)
+        unquote_plus(key): (
+            unquote_plus(value)
+            if isinstance(value, str)
+            else tuple(unquote_plus(element) for element in value)
+        )
         for key, value in params.items()
     }
     query_string = urlencode(params, doseq=True).encode()
