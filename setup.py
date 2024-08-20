@@ -7,10 +7,10 @@ def get_long_description():
 
 setup(
     name="mangum",
-    version="0.17.0",
+    version="0.17.1",
     packages=find_packages(exclude=["tests*"]),
     license="MIT",
-    url="https://github.com/jordaneremieff/mangum",
+    url="https://github.com/andesorg/mangum",
     description="AWS Lambda support for ASGI applications",
     long_description=get_long_description(),
     python_requires=">=3.7",
@@ -27,5 +27,6 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.12",
     ],
 )

@@ -58,11 +58,11 @@ def get_mock_aws_api_gateway_event(
         },
         "resource": "/{proxy+}",
         "httpMethod": method,
-        "multiValueQueryStringParameters": {
-            k: v for k, v in multi_value_query_parameters.items()
-        }
-        if multi_value_query_parameters
-        else None,
+        "multiValueQueryStringParameters": (
+            {k: v for k, v in multi_value_query_parameters.items()}
+            if multi_value_query_parameters
+            else None
+        ),
         "stageVariables": {"stageVarName": "stageVarValue"},
     }
 
@@ -105,7 +105,7 @@ def test_aws_api_gateway_scope_basic():
     example_context = {}
     handler = APIGateway(example_event, example_context, {"api_gateway_base_path": "/"})
 
-    assert type(handler.body) == bytes
+    assert isinstance(handler.body, bytes)
     assert handler.scope == {
         "asgi": {"version": "3.0", "spec_version": "2.0"},
         "aws.context": {},

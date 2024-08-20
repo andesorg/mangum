@@ -5,7 +5,9 @@ coverage:
 
   status:
     project: yes
-    patch: no
-    changes: no
+    patch: off
+    changes: false
 
-comment: off
+  repository: "andesorg/mangum"
+
+comment: false

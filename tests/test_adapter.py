@@ -5,8 +5,7 @@ from mangum.adapter import DEFAULT_TEXT_MIME_TYPES
 from mangum.exceptions import ConfigurationError
 
 
-async def app(scope, receive, send):
-    ...
+async def app(scope, receive, send): ...
 
 
 def test_default_settings():

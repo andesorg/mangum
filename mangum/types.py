@@ -101,8 +101,9 @@ Send: TypeAlias = Callable[[Message], Awaitable[None]]
 
 
 class ASGI(Protocol):
-    async def __call__(self, scope: Scope, receive: Receive, send: Send) -> None:
-        ...  # pragma: no cover
+    async def __call__(
+        self, scope: Scope, receive: Receive, send: Send
+    ) -> None: ...  # pragma: no cover
 
 
 LifespanMode: TypeAlias = Literal["auto", "on", "off"]
@@ -121,22 +122,17 @@ class LambdaConfig(TypedDict):
 
 
 class LambdaHandler(Protocol):
-    def __init__(self, *args: Any) -> None:
-        ...  # pragma: no cover
+    def __init__(self, *args: Any) -> None: ...  # pragma: no cover
 
     @classmethod
     def infer(
         cls, event: LambdaEvent, context: LambdaContext, config: LambdaConfig
-    ) -> bool:
-        ...  # pragma: no cover
+    ) -> bool: ...  # pragma: no cover
 
     @property
-    def body(self) -> bytes:
-        ...  # pragma: no cover
+    def body(self) -> bytes: ...  # pragma: no cover
 
     @property
-    def scope(self) -> Scope:
-        ...  # pragma: no cover
+    def scope(self) -> Scope: ...  # pragma: no cover
 
-    def __call__(self, response: Response) -> dict:
-        ...  # pragma: no cover
+    def __call__(self, response: Response) -> dict: ...  # pragma: no cover
