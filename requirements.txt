@@ -1,13 +1,13 @@
 # Testing
-pytest
-codecov
-pytest-cov
-black
-flake8
-starlette
-quart
-mypy
-brotli
-brotli-asgi
-mkdocs
-mkdocs-material
+pytest==8.3.2
+codecov==2.1.13
+pytest-cov==5.0.0
+black==24.8.0
+flake8==7.1.1
+starlette==0.37.2
+quart==0.19.6
+mypy==1.11.1
+Brotli==1.1.0
+brotli-asgi==1.4.0
+mkdocs==1.6.0
+mkdocs-material==9.5.32
