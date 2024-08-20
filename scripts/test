@@ -8,4 +8,4 @@ fi
 
 set -x # print executed commands to the terminal
 
-python -m pytest --ignore venv --cov=mangum --cov=tests --cov-fail-under=100 --cov-report=term-missing "${@}"
+poetry run pytest --ignore venv --cov=mangum --cov=tests --cov-fail-under=100 --cov-report=term-missing "${@}"
